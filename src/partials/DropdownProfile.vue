@@ -7,7 +7,7 @@
       @click.prevent="dropdownOpen = !dropdownOpen"
       :aria-expanded="dropdownOpen"
     >
-      <img class="w-8 h-8 rounded-full" src="../images/img/userAcc.png" width="32" height="32" alt="User" />
+      <img class="w-8 h-8 rounded-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI9lRck6miglY0SZF_BZ_sK829yiNskgYRUg&s" width="32" height="32" alt="User" />
       <div class="flex items-center truncate">
         <span class="truncate ml-2 text-sm font-medium group-hover:text-slate-800 capitalize">{{user.name}} .</span>
         <svg class="w-3 h-3 shrink-0 ml-1 fill-current text-slate-400" viewBox="0 0 12 12">

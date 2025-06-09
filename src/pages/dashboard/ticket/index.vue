@@ -42,105 +42,106 @@
             </div>
           </div>
         </div>
-
-        <el-table  :data="ticketsData"  class="w-full"  :header-cell-style="{    background: '#f8fafc',    color: '#374151',    fontWeight: '600',    fontSize: '14px',    padding: '10px',  }"  :cell-style="{ padding: '8px' }" stripe  >
-          <el-table-column type="selection" width="55" />
-          <el-table-column label="Ticket ID" width="120">
-            <template #default="scope">
-              <span  class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">  #{{ scope.row.ticketId }}  </span>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Issue" min-width="250">
-            <template #default="scope">
-              <div class="max-w-xs">
-                <p class="font-medium text-gray-900 truncate">  {{ scope.row.issue }}  </p>
-                <p class="text-sm text-gray-500 truncate mt-1">   Call #{{ scope.row.callId.callId }} • {{ scope.row?.callId?.duration }}min  </p>
-              </div>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Status" width="130">
-            <template #default="scope">
-              <el-tag   :type="     scope.row.status === 'open'       ? 'danger'       : scope.row.status === 'in_progress'       ? 'warning'       : 'success'   "   class="!rounded-full !px-3 !py-1 font-medium" >
-                {{
-                  scope.row.status === "in_progress"
-                    ? "In Progress"
-                    : scope.row.status.charAt(0).toUpperCase() +
-                      scope.row.status.slice(1)
-                }}
-              </el-tag>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Created By" width="180">
-            <template #default="scope">
-              <div class="flex items-center gap-3">
-                <div     class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"  >
-                  <span class="text-xs font-medium text-gray-700">
-                    {{ scope.row.createdBy?.name?.charAt(0).toUpperCase() }}
-                  </span>
+        <div >
+          <el-table :data="ticketsData"  class="w-full"  :header-cell-style="{    background: '#f8fafc',    color: '#374151',    fontWeight: '600',    fontSize: '14px',    padding: '10px',  }"  :cell-style="{ padding: '8px' }" stripe  >
+            <el-table-column type="selection" width="55" />
+            <el-table-column label="Ticket ID" width="120">
+              <template #default="scope">
+                <span  class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">  #{{ scope.row.ticketId }}  </span>
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Issue" min-width="250">
+              <template #default="scope">
+                <div class="max-w-xs">
+                  <p class="font-medium text-gray-900 truncate">  {{ scope.row.issue }}  </p>
+                  <p class="text-sm text-gray-500 truncate mt-1">   Call #{{ scope.row.callId.callId }} • {{ scope.row?.callId?.duration }}min  </p>
                 </div>
-                <div>
-                  <p class="font-semibold text-gray-900">
-                    {{ scope.row.createdBy?.name }}
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Status" width="130">
+              <template #default="scope">
+                <el-tag   :type="     scope.row.status === 'open'       ? 'danger'       : scope.row.status === 'in_progress'       ? 'warning'       : 'success'   "   class="!rounded-full !px-3 !py-1 font-medium" >
+                  {{
+                    scope.row.status === "in_progress"
+                      ? "In Progress"
+                      : scope.row.status.charAt(0).toUpperCase() +
+                        scope.row.status.slice(1)
+                  }}
+                </el-tag>
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Created By" width="180">
+              <template #default="scope">
+                <div class="flex items-center gap-3">
+                  <div     class="h-8 w-8 rounded-full bg-gray-300 flex items-center justify-center"  >
+                    <span class="text-xs font-medium text-gray-700">
+                      {{ scope.row.createdBy?.name?.charAt(0).toUpperCase() }}
+                    </span>
+                  </div>
+                  <div>
+                    <p class="font-semibold text-gray-900">
+                      {{ scope.row.createdBy?.name }}
+                    </p>
+                  </div>
+                </div>
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Priority" width="120">
+              <template #default="scope">
+                <el-tag  :type="    scope.row.priority === 'High'      ? 'danger'      : scope.row.priority === 'Medium'      ? 'warning'      : 'success'  "  class="!rounded-full !px-3 !py-1 font-medium"  >
+                  {{ scope.row.priority }}
+                </el-tag>
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Created" width="180">
+              <template #default="scope">
+                <div class="flex items-center gap-2">
+                  <p class="font-medium text-gray-900">
+                    {{ formatDate(scope.row.createdAt) }}
+                  </p>
+                  <p class="text-sm text-gray-500">
+                    {{ formatTime(scope.row.createdAt) }}
                   </p>
                 </div>
-              </div>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Priority" width="120">
-            <template #default="scope">
-              <el-tag  :type="    scope.row.priority === 'High'      ? 'danger'      : scope.row.priority === 'Medium'      ? 'warning'      : 'success'  "  class="!rounded-full !px-3 !py-1 font-medium"  >
-                {{ scope.row.priority }}
-              </el-tag>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Created" width="180">
-            <template #default="scope">
-              <div class="flex items-center gap-2">
-                <p class="font-medium text-gray-900">
-                  {{ formatDate(scope.row.createdAt) }}
-                </p>
-                <p class="text-sm text-gray-500">
-                  {{ formatTime(scope.row.createdAt) }}
-                </p>
-              </div>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Comments" width="100" align="center">
-            <template #default="scope">
-              <el-tag type="info" class="!rounded-full !px-3 !py-1 font-medium">
-                {{ scope.row.comments?.length||0 }}
-              </el-tag>
-            </template>
-          </el-table-column>
-
-          <el-table-column label="Actions" width="190" fixed="right">
-            <template #default="scope">
-              <div class="flex items-center gap-2">
-                <el-tooltip content="View Details" placement="top">
-                  <el-button  size="small"  type="primary"  :icon="View"  circle  class="!w-8 !h-8"  @click="viewTicket(scope.row)"  />
-                </el-tooltip>
-
-                <el-tooltip content="Edit Ticket" placement="top">
-                  <el-button   size="small"   type="warning"   :icon="Edit"   circle   class="!w-8 !h-8"   @click="editTicket(scope.row)"   />
-                </el-tooltip>
-
-                <el-tooltip content="Add Comment" placement="top">
-                  <el-button  size="small"  type="success"  :icon="ChatDotRound"  circle  class="!w-8 !h-8"  @click="addComment(scope.row)"/>
-                </el-tooltip>
-
-                <el-tooltip content="Delete Ticket" placement="top">
-                  <el-button   size="small"   type="danger"   :icon="Delete"   circle   class="!w-8 !h-8"   @click="deleteTicket(scope.row)" />
-                </el-tooltip>
-              </div>
-            </template>
-          </el-table-column>
-        </el-table>
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Comments" width="100" align="center">
+              <template #default="scope">
+                <el-tag type="info" class="!rounded-full !px-3 !py-1 font-medium">
+                  {{ scope.row.comments?.length||0 }}
+                </el-tag>
+              </template>
+            </el-table-column>
+  
+            <el-table-column label="Actions" width="190" fixed="right">
+              <template #default="scope">
+                <div class="flex items-center gap-2">
+                  <el-tooltip content="View Details" placement="top">
+                    <el-button  size="small"  type="primary"  :icon="View"  circle  class="!w-8 !h-8"  @click="viewTicket(scope.row)"  />
+                  </el-tooltip>
+  
+                  <el-tooltip content="Edit Ticket" placement="top">
+                    <el-button   size="small"   type="warning"   :icon="Edit"   circle   class="!w-8 !h-8"   @click="editTicket(scope.row)"   />
+                  </el-tooltip>
+  
+                  <el-tooltip content="Add Comment" placement="top">
+                    <el-button  size="small"  type="success"  :icon="ChatDotRound"  circle  class="!w-8 !h-8"  @click="addComment(scope.row)"/>
+                  </el-tooltip>
+  
+                  <el-tooltip content="Delete Ticket" placement="top">
+                    <el-button   size="small"   type="danger"   :icon="Delete"   circle   class="!w-8 !h-8"   @click="deleteTicket(scope.row)" />
+                  </el-tooltip>
+                </div>
+              </template>
+            </el-table-column>
+          </el-table>
+        </div>
 
         <div class="p-6 border-t border-gray-100 flex justify-center">
           <el-pagination  v-model:current-page="currentPage"  v-model:page-size="pageSize"  :page-sizes="[10, 20, 50, 100]"  layout="total, sizes, prev, pager, next, jumper"  class="!flex !flex-wrap !justify-center !gap-2" />

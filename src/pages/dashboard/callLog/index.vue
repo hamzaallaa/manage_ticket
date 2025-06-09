@@ -76,6 +76,12 @@
         </div>
 
         <el-table  :data="callLogs"  class="w-full"  :header-cell-style="{    background: '#f8fafc',    color: '#374151',    fontWeight: '600',    fontSize: '14px',    padding: '16px',  }" :cell-style="{ padding: '8px' }" stripe>
+            <el-table-column type="selection" width="55" />
+            <el-table-column label="call ID" width="120">
+              <template #default="scope">
+                <span  class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-100 text-gray-800">  #{{ scope.row.callId }}  </span>
+              </template>
+            </el-table-column>
           <el-table-column label="Agent" width="180">
             <template #default="scope">
               <div class="flex items-center gap-3">
