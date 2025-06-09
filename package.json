@@ -1,0 +1,50 @@
+{
+  "name": "rdp_manager_vuejs",
+  "version": "1.0.0",
+  "description": "Rdp Manager using VUEJS",
+  "main": "main.js",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-vue": "^7.0.0",
+    "@element-plus/icons-vue": "^2.3.1",
+    "@meforma/vue-toaster": "^1.3.0",
+    "@tailwindcss/forms": "^0.5.2",
+    "apexcharts": "^4.4.0",
+    "axios": "^1.1.3",
+    "ckeditor5": "^43.1.0",
+    "ckeditor5-premium-features": "^43.1.0",
+    "datatables.net-dt": "^1.13.1",
+    "datatables.net-vue3": "^2.0.0",
+    "element-plus": "^2.9.11",
+    "moment": "^2.29.4",
+    "primevue": "^3.50.0",
+    "qs": "^6.11.0",
+    "vue": "^3.2.20",
+    "vue-moment": "^4.1.0",
+    "vue-router": "^4.1.2",
+    "vue3-apexcharts": "^1.4.4",
+    "vuex": "^4.1.0",
+    "yarn": "^1.22.19"
+  },
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.3",
+    "@vitejs/plugin-vue": "^3.0.0",
+    "@vue/compiler-sfc": "^3.2.20",
+    "autoprefixer": "^10.4.7",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.6",
+    "unplugin-auto-import": "^19.3.0",
+    "unplugin-vue-components": "^28.7.0",
+    "vite": "^3.0.0"
+  },
+  "keywords": [
+    "rdpmanager"
+  ],
+  "author": "app",
+  "license": "MIT"
+}
