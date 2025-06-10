@@ -19,7 +19,6 @@
         </div>
         <div class="flex items-center space-x-3">
           <slot name="actions">
-            <!-- Default action button if no slot content provided -->
             <el-button
               v-if="showDefaultAction"
               type="primary"
@@ -43,7 +42,6 @@
 import { computed } from 'vue';
 import { Plus } from '@element-plus/icons-vue';
 
-// Props
 const props = defineProps({
   title: {
     type: String,
@@ -77,10 +75,8 @@ const props = defineProps({
   }
 });
 
-// Emits
 const emit = defineEmits(['action-click']);
 
-// Computed properties for dynamic classes
 const iconBgClass = computed(() => {
   const colorMap = {
     blue: 'bg-blue-100',
