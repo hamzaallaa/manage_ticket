@@ -48,7 +48,6 @@
           </div>
         </div>
         
-        <!-- Additional fields if provided -->
         <div v-if="callData.callType" class="mt-4">
           <div class="flex items-center gap-2">
             <el-icon class="text-indigo-500"><Phone /></el-icon>
@@ -122,7 +121,6 @@ const props = defineProps({
     default: 'Call Details'
   },
   
-  // Action buttons
   showActions: {
     type: Boolean,
     default: true
@@ -139,8 +137,7 @@ const props = defineProps({
     type: Boolean,
     default: true
   },
-  
-  // Button texts
+
   createTicketText: {
     type: String,
     default: 'Create Ticket'
@@ -154,7 +151,6 @@ const props = defineProps({
     default: 'Delete Call'
   },
   
-  // Formatters (optional - parent can override)
   dateFormatter: {
     type: Function,
     default: null
@@ -176,7 +172,6 @@ const emit = defineEmits([
   'delete'
 ])
 
-// Helper functions
 const getAgentName = (agent) => {
   if (typeof agent === 'string') return agent
   if (typeof agent === 'object' && agent?.name) return agent.name
@@ -215,7 +210,6 @@ const getStatusText = (status) => {
   return statusTextMap[status] || status
 }
 
-// Default formatters (can be overridden by props)
 const formatDate = (dateTime) => {
   if (props.dateFormatter) return props.dateFormatter(dateTime)
   

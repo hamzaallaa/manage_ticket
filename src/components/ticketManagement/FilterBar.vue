@@ -1,7 +1,6 @@
 <template>
   <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
     <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
-      <!-- Search Section -->
       <div class="flex-1 max-w-md">
         <el-input
           :model-value="search"
@@ -19,9 +18,7 @@
         </el-input>
       </div>
 
-      <!-- Filters Section -->
       <div class="flex flex-wrap items-center gap-3">
-        <!-- Dynamic Select Filters -->
         <template v-for="filter in selectFilters" :key="filter.key">
           <el-select
             :model-value="filterValues[filter.key]"
@@ -40,7 +37,6 @@
           </el-select>
         </template>
 
-        <!-- Date Range Picker -->
         <el-date-picker
           v-if="showDateRange"
           :model-value="dateRangeValue"
@@ -53,10 +49,7 @@
           class="w-64"
         />
 
-        <!-- Custom Filter Slots -->
         <slot name="custom-filters"></slot>
-
-        <!-- Action Buttons -->
         <template v-for="action in actions" :key="action.key">
           <el-tooltip v-if="action.tooltip" :content="action.tooltip" placement="top">
             <el-button
@@ -88,8 +81,6 @@
             </span>
           </el-button>
         </template>
-
-        <!-- Default Refresh Button -->
         <el-tooltip v-if="showRefresh" content="Refresh" placement="top">
           <el-button
             size="large"
@@ -107,10 +98,7 @@
 <script setup>
 import { reactive, watch } from 'vue';
 import { Search, Refresh } from '@element-plus/icons-vue';
-
-// Props
 const props = defineProps({
-  // Search props
   search: {
     type: String,
     default: ''
@@ -123,8 +111,6 @@ const props = defineProps({
     type: [String, Object],
     default: () => Search
   },
-  
-  // Filter props
   selectFilters: {
     type: Array,
     default: () => []
@@ -134,7 +120,6 @@ const props = defineProps({
     default: () => ({})
   },
   
-  // Date range props
   showDateRange: {
     type: Boolean,
     default: true
@@ -152,7 +137,6 @@ const props = defineProps({
     default: 'End date'
   },
   
-  // Action buttons
   actions: {
     type: Array,
     default: () => []
@@ -163,7 +147,6 @@ const props = defineProps({
   }
 });
 
-// Emits
 const emit = defineEmits([
   'update:search',
   'update:dateRange',
@@ -172,7 +155,6 @@ const emit = defineEmits([
   'refresh'
 ]);
 
-// Handle filter changes
 const handleFilterChange = (key, value) => {
   emit('filter-change', { key, value });
 };
