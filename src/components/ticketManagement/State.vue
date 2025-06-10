@@ -31,7 +31,6 @@
 <script setup>
 import { computed } from 'vue';
 
-// Props
 const props = defineProps({
   stats: {
     type: Array,
@@ -57,10 +56,7 @@ const props = defineProps({
   }
 });
 
-// Emits
 const emit = defineEmits(['card-click']);
-
-// Computed grid classes
 const gridClass = computed(() => {
   if (typeof props.columns === 'number') {
     const colMap = {
@@ -74,12 +70,10 @@ const gridClass = computed(() => {
     return colMap[props.columns] || 'grid-cols-1 md:grid-cols-3';
   }
   
-  // Object format for custom breakpoints
   const { default: def = 1, md = 3, lg = 3, xl = 3 } = props.columns;
   return `grid-cols-${def} md:grid-cols-${md} lg:grid-cols-${lg} xl:grid-cols-${xl}`;
 });
 
-// Color mapping functions
 const getIconBgClass = (color) => {
   const colorMap = {
     orange: 'bg-orange-100',
@@ -116,7 +110,6 @@ const getChangeClass = (change) => {
   return 'text-gray-600';
 };
 
-// Formatting functions
 const formatValue = (value) => {
   if (typeof value === 'number') {
     if (value >= 1000000) {
@@ -134,8 +127,6 @@ const formatChange = (change) => {
   const sign = change > 0 ? '+' : '';
   return `${sign}${change}%`;
 };
-
-// Event handlers
 const handleCardClick = (stat, index) => {
   if (props.clickable) {
     emit('card-click', { stat, index });

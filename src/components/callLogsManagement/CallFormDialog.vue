@@ -173,7 +173,6 @@ const form = ref({
   description: ''
 })
 
-// Watch for data changes and update form
 watch(() => props.data, (newData) => {
   if (newData && Object.keys(newData).length > 0) {
     form.value = { ...newData }
@@ -182,7 +181,6 @@ watch(() => props.data, (newData) => {
   }
 }, { immediate: true, deep: true })
 
-// Watch for dialog visibility to reset form when closing
 watch(() => props.visible, (visible) => {
   if (!visible && !props.isEditing) {
     resetForm()
